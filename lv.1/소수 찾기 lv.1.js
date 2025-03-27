@@ -1,14 +1,17 @@
-function isPrime(x) {
-  for (let i = 2; i <= Math.sqrt(x); i++) {
-    if (x % i === 0) return false;
-  }
-  return true;
-}
-
 function solution(n) {
-  let answer = 0;
-  for (let i = 2; i <= n; i++) {
-    if (isPrime(i)) answer++;
-  }
-  return answer;
+    let count = 1;
+    if (n === 2) return count;
+    else {
+        for (let i = 3; i <= n; i += 2) {
+            let temp = 0;
+            for (let j = 3; j <= Math.floor(Math.sqrt(i)); j += 2) {
+                if (i % j === 0) {
+                    temp++;
+                    break;
+                }
+            }
+            if (temp === 0) count++;
+        }
+        return count;
+    }
 }
