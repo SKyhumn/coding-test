@@ -1,9 +1,11 @@
 function solution(a, b, n) {
-    let answer = 0;
-    while(n>=a){
-        const newBottle=Math.floor(n/a*b);
-        answer+=newBottle;
-        n=newBottle+(n%a);
+    let [sum, remainBottle] = [0, n];
+
+    while (remainBottle >= a) {
+        let remainder = remainBottle % a;
+        let increasedBottleCount = Math.floor(remainBottle / a) * b;
+        sum += increasedBottleCount;
+        remainBottle = increasedBottleCount + remainder;
     }
-    return answer;
+    return sum;
 }
